@@ -14,8 +14,9 @@
             <h:outputLabel value="Contraseña"/>
             <h:inputSecret value="#{usuarioController.actual.clave}"  />
             
-            <h:commandButton action="#{usuarioController.login()}" value="Login" />
-            
+            <h:commandButton styleClass="btn primary" action="#{usuarioController.login()}" value="Login" />
+            <br></br>
+            <h:link outcome="/userlist" value="Listado de usuarios"/>
         </h:form>
     </h:body>
 </html>
