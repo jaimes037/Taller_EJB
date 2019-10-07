@@ -51,7 +51,7 @@ public class UsuarioController implements Serializable {
             return "index?faces-redirect=true";
         } else {
             actual = result;
-            return "home?faces-redirect=true";
+            return "userlist?faces-redirect=true";
         }
     }
 

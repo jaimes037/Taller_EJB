@@ -1,27 +1,73 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Laboratorio EJB | Listado de Usuarios</title>
+        <h:outputStylesheet library = "css" name = "userlist.css"  /> 
+        <h:outputStylesheet library = "bootstrap-4.3.1-dist/css" name = "bootstrap-grid.css"  /> 
+        <h:outputStylesheet library = "bootstrap-4.3.1-dist/css" name = "bootstrap-grid.css.map"  /> 
+        <h:outputStylesheet library = "bootstrap-4.3.1-dist/css" name = "bootstrap-grid.min.css"  /> 
+        <h:outputStylesheet library = "bootstrap-4.3.1-dist/css" name = "bootstrap-grid.min.css.map"  /> 
+        <h:outputStylesheet library = "bootstrap-4.3.1-dist/css" name = "bootstrap-reboot.css"  />
+        <h:outputStylesheet library = "bootstrap-4.3.1-dist/css" name = "bootstrap-reboot.css.map"  /> 
+        <h:outputStylesheet library = "bootstrap-4.3.1-dist/css" name = "bootstrap-reboot.min.css"  /> 
+        <h:outputStylesheet library = "bootstrap-4.3.1-dist/css" name = "bootstrap-reboot.min.css.map"  /> 
+        <h:outputStylesheet library = "bootstrap-4.3.1-dist/css" name = "bootstrap.css"  />
+        <h:outputStylesheet library = "bootstrap-4.3.1-dist/css" name = "bootstrap.css.map"  /> 
+        <h:outputStylesheet library = "bootstrap-4.3.1-dist/css" name = "bootstrap.min.css"  /> 
+        <h:outputStylesheet library = "bootstrap-4.3.1-dist/css" name = "bootstrap.min.css.map"  /> 
+
+        <h:outputScript library="bootstrap-4.3.1-dist/js" name="bootstrap.bundle.js"/>
+        <h:outputScript library="bootstrap-4.3.1-dist/js" name="bootstrap.bundle.js.map"/>
+        <h:outputScript library="bootstrap-4.3.1-dist/js" name="bootstrap.bundle.min.js"/>
+        <h:outputScript library="bootstrap-4.3.1-dist/js" name="bootstrap.bundle.min.js.map"/>
+        <h:outputScript library="bootstrap-4.3.1-dist/js" name="bootstrap.js"/>
+        <h:outputScript library="bootstrap-4.3.1-dist/js" name="bootstrap.js.map"/>
+        <h:outputScript library="bootstrap-4.3.1-dist/js" name="bootstrap.min.js"/>
+        <h:outputScript library="bootstrap-4.3.1-dist/js" name="bootstrap.min.js.map"/>
+
     </h:head>
-    <h:body>
+    <h:body style="color: #666;background: #f5f5f5;font-family: 'Roboto', sans-serif;">
+        <p:outputPanel styleClass="alert alert-warning" >
+            Se está editando un usuario!
+        </p:outputPanel>
         <h:form>
-            <h:panelGrid columns="2">
-                <h:outputLabel value="#Correo" for="correo" />
-                <h:inputText id="correo" value="#{usuarioController.actual.correo}" title="Correo" required="true"/>
-                <h:outputLabel value="#Clave" for="clave" />
-                <h:inputText id="clave" value="#{usuarioController.actual.clave}" title="Clave" required="true"/>
-                <h:outputLabel value="#Tipo" for="tipo" />
-                <h:inputText id="tipo" value="#{usuarioController.actual.tipo}" title="Tipo" required="true"/>
-            </h:panelGrid>
-            <h:commandLink action="#{usuarioController.edit}" value="Guardar y salir"/>
-            <br />
-            <br />
-            <br />
-            <h:commandLink action="#{usuariosController.prepareList}" value="Volver al listado" immediate="true"/>
-            <br />
-            <br />
+            <p:outputPanel styleClass="container">
+                <h:outputLabel value="Editar Usuario" style="font-size: 32px; text-align: center;"/>
+                <p:outputPanel styleClass="table-wrapper">
+                    <h:panelGrid styleClass="table table-striped" columns="4">
+                        <h:column>
+                            Correo<br></br>
+                            <h:inputText id="correo" value="#{usuarioController.actual.correo}" title="Correo" required="true"/>
+                        </h:column>
+
+                        <h:column>
+                            Clave<br></br>
+                            <h:inputText id="clave" value="#{usuarioController.actual.clave}" title="Clave" required="true"/>
+                        </h:column>
+
+                        <h:column>
+                            Tipo<br></br>
+                            <h:selectOneMenu value = "#{usuarioController.actual.tipo}" required="true"> 
+                                <f:selectItem itemValue = "A" itemLabel = "Administrador" /> 
+                                <f:selectItem itemValue = "C" itemLabel = "Coordinador" />
+                                <f:selectItem itemValue = "P" itemLabel = "Participante" /> 
+                            </h:selectOneMenu> 	
+                        </h:column>
+
+                        <h:column>
+                            &nbsp;<br></br>
+
+                            <h:commandButton styleClass="btn btn-success" action="#{usuarioController.edit}" value="Guardar y salir"/>
+                            <h:outputText value=" "/>
+                        </h:column>
+                    </h:panelGrid>
+                    <h:commandButton styleClass="btn btn-primary" action="#{usuarioController.prepareList()}" value="Volver al listado" immediate="true"/>
+                </p:outputPanel>
+            </p:outputPanel>>
         </h:form>
     </h:body>
 </html>

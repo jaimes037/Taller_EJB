@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Laboratorio EJB | Crear usuario</title>
+    </h:head>
+    <h:body>
+        <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Correo" for="correo" />
+                    <h:inputText id="correo" value="#{usuarioController.actual.correo}" required="true"/>
+                    <h:outputLabel value="Clave" for="clave" />
+                    <h:inputText id="clave" value="#{usuarioController.actual.clave}" required="true"/>
+                    <h:outputLabel value="Tipo" for="tipo" />
+                    <h:inputText id="tipo" value="#{usuarioController.actual.tipo}" required="true"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{usuarioController.create()}" value="Crear" />
+                <br />
+                <br />
+                <h:commandLink action="#{usuariosController.prepareList}" value="#{bundle.CreateUsuariosShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateUsuariosIndexLink}"/>
+            </h:form>
+    </h:body>
+</html>
+
